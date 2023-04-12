@@ -4,7 +4,7 @@
 # Workspace root:
 # /Users/ericpetron/Library/CloudStorage/Dropbox/spring23/csci2041/DUNE/fictional-octo-system
 # Auto-detected concurrency: 8
-$ /Users/ericpetron/.opam/default/bin/ocamlc.opt -config > /var/folders/3m/2dvptp656lnfvy01sqn9fzg40000gn/T/dune_e189a4_output
+$ /Users/ericpetron/.opam/default/bin/ocamlc.opt -config > /var/folders/3m/2dvptp656lnfvy01sqn9fzg40000gn/T/dune_05bb09_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -113,107 +113,9 @@ $ /Users/ericpetron/.opam/default/bin/ocamlc.opt -config > /var/folders/3m/2dvpt
 #      ; windows_unicode = false
 #      }
 #  }
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I test/.Simplifier.eobjs/byte -no-alias-deps -opaque -o test/.Simplifier.eobjs/byte/dune__exe__Simplifier.cmo -c -impl test/Simplifier.ml)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o test/Simplifier.bc test/.Simplifier.eobjs/byte/dune__exe__Simplifier.cmo)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamllex -q -o lib/lexer.ml lib/lexer.mll)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/menhir lib/parser.mly --base lib/parser --infer-write-query lib/parser__mock.ml.mock)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -opaque -o lib/.Simplifier.objs/byte/simplifier__.cmo -c -impl lib/simplifier__.ml-gen)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/simplifier.ml) > _build/default/lib/.Simplifier.objs/simplifier.impl.d
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/parser__mock.ml.mock) > _build/default/lib/.Simplifier.objs/parser__mock.impl.d
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/ast.ml) > _build/default/lib/.Simplifier.objs/simplifier__Ast.impl.d
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/lexer.ml) > _build/default/lib/.Simplifier.objs/simplifier__Lexer.impl.d
 $ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/modules.ml) > _build/default/lib/.Simplifier.objs/simplifier__Modules.impl.d
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -opaque -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier__Ast.cmo -c -impl lib/ast.ml)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -opaque -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier__Modules.cmo -c -impl lib/modules.ml)
-> File "lib/modules.ml", line 54, characters 2-27:
-> 54 |   type 'a substitution = ()
->        ^^^^^^^^^^^^^^^^^^^^^^^^^
-> Warning 65 [redefining-unit]: This type declaration is defining a new '()' constructor
-> which shadows the existing one.
-> Hint: Did you mean 'type substitution = unit'?
-> File "lib/modules.ml", line 64, characters 10-20:
-> 64 |   let rec substitute (subst : 'a substitution) (pattern : string expr) : 'a expr = raise (MalformedSubstitution "Something is still not implemented yet")
->                ^^^^^^^^^^
-> Error (warning 39 [unused-rec-flag]): unused rec flag.
-> File "lib/modules.ml", line 103, characters 10-20:
-> 103 |   let rec apply_rule (rl: string rule) (expr: string expr) : string expr option = None
->                 ^^^^^^^^^^
-> Error (warning 39 [unused-rec-flag]): unused rec flag.
-> File "lib/modules.ml", line 56, characters 17-18:
-> 56 |   let singleton (x : string) (e : 'a expr) : 'a substitution = ()
->                       ^
-> Error (warning 27 [unused-var-strict]): unused variable x.
-> File "lib/modules.ml", line 56, characters 30-31:
-> 56 |   let singleton (x : string) (e : 'a expr) : 'a substitution = ()
->                                    ^
-> Error (warning 27 [unused-var-strict]): unused variable e.
-> File "lib/modules.ml", line 58, characters 15-16:
-> 58 |   let for_all (f : string -> 'a expr -> bool) (subst : 'a substitution) : bool = true
->                     ^
-> Error (warning 27 [unused-var-strict]): unused variable f.
-> File "lib/modules.ml", line 58, characters 47-52:
-> 58 |   let for_all (f : string -> 'a expr -> bool) (subst : 'a substitution) : bool = true
->                                                     ^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable subst.
-> File "lib/modules.ml", line 60, characters 29-30:
-> 60 |   let combine_substitutions (a : 'a substitution option)
+> File "lib/modules.ml", line 66, characters 29-30:
+> 66 |   let combine_substitutions ('a substitution option -> 'a substitution option -> 'a substitution option) = Hashmap.union merge
 >                                   ^
-> Error (warning 27 [unused-var-strict]): unused variable a.
-> File "lib/modules.ml", line 61, characters 29-30:
-> 61 |                             (b : 'a substitution option) : 'a substitution option = Some ()
->                                   ^
-> Error (warning 27 [unused-var-strict]): unused variable b.
-> File "lib/modules.ml", line 64, characters 22-27:
-> 64 |   let rec substitute (subst : 'a substitution) (pattern : string expr) : 'a expr = raise (MalformedSubstitution "Something is still not implemented yet")
->                            ^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable subst.
-> File "lib/modules.ml", line 64, characters 48-55:
-> 64 |   let rec substitute (subst : 'a substitution) (pattern : string expr) : 'a expr = raise (MalformedSubstitution "Something is still not implemented yet")
->                                                      ^^^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable pattern.
-> File "lib/modules.ml", line 90, characters 6-24:
-> 90 |   let check_substitution (subst : 'a Substitution.substitution) : bool = true
->            ^^^^^^^^^^^^^^^^^^
-> Error (warning 32 [unused-value-declaration]): unused value check_substitution.
-> File "lib/modules.ml", line 90, characters 26-31:
-> 90 |   let check_substitution (subst : 'a Substitution.substitution) : bool = true
->                                ^^^^^
-> Error (warning 27 [unused-var-strict]): unused variable subst.
-> File "lib/modules.ml", line 99, characters 6-25:
-> 99 |   let apply_rule_toplevel (Rule (lhs,rhs) : string rule) (expr : string expr)
->            ^^^^^^^^^^^^^^^^^^^
-> Error (warning 32 [unused-value-declaration]): unused value apply_rule_toplevel.
-> File "lib/modules.ml", line 99, characters 33-36:
-> 99 |   let apply_rule_toplevel (Rule (lhs,rhs) : string rule) (expr : string expr)
->                                       ^^^
-> Error (warning 27 [unused-var-strict]): unused variable lhs.
-> File "lib/modules.ml", line 99, characters 37-40:
-> 99 |   let apply_rule_toplevel (Rule (lhs,rhs) : string rule) (expr : string expr)
->                                           ^^^
-> Error (warning 27 [unused-var-strict]): unused variable rhs.
-> File "lib/modules.ml", line 99, characters 58-62:
-> 99 |   let apply_rule_toplevel (Rule (lhs,rhs) : string rule) (expr : string expr)
->                                                                ^^^^
-> Error (warning 27 [unused-var-strict]): unused variable expr.
-> File "lib/modules.ml", line 103, characters 22-24:
-> 103 |   let rec apply_rule (rl: string rule) (expr: string expr) : string expr option = None
->                             ^^
-> Error (warning 27 [unused-var-strict]): unused variable rl.
-> File "lib/modules.ml", line 103, characters 40-44:
-> 103 |   let rec apply_rule (rl: string rule) (expr: string expr) : string expr option = None
->                                               ^^^^
-> Error (warning 27 [unused-var-strict]): unused variable expr.
+> Error: Syntax error: operator expected.
 [2]
-$ (cd _build/.sandbox/6c34318d117de2e80c12f02ad8f9f793/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.Simplifier.objs/byte -open Simplifier__ -short-paths -i -impl lib/parser__mock.ml.mock) > _build/.sandbox/6c34318d117de2e80c12f02ad8f9f793/default/lib/parser__mock.mli.inferred
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml-gen -no-alias-deps -opaque -o lib/.Simplifier.objs/native/simplifier__.cmx -c -impl lib/simplifier__.ml-gen)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I test/.Simplifier.eobjs/byte -I test/.Simplifier.eobjs/native -intf-suffix .ml -no-alias-deps -opaque -o test/.Simplifier.eobjs/native/dune__exe__Simplifier.cmx -c -impl test/Simplifier.ml)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/menhir lib/parser.mly --base lib/parser --infer-read-reply lib/parser__mock.mli.inferred)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -intf lib/parser.mli) > _build/default/lib/.Simplifier.objs/simplifier__Parser.intf.d
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/parser.ml) > _build/default/lib/.Simplifier.objs/simplifier__Parser.impl.d
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Simplifier__ -o lib/.Simplifier.objs/native/simplifier__Ast.cmx -c -impl lib/ast.ml)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -opaque -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier__Parser.cmi -c -intf lib/parser.mli)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -opaque -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier__Lexer.cmo -c -impl lib/lexer.ml)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Simplifier__ -o lib/.Simplifier.objs/native/simplifier__Lexer.cmx -c -impl lib/lexer.ml)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.Simplifier.objs/byte -intf-suffix .ml -no-alias-deps -opaque -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier__Parser.cmo -c -impl lib/parser.ml)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Simplifier__ -o lib/.Simplifier.objs/native/simplifier__Parser.cmx -c -impl lib/parser.ml)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o test/Simplifier.exe test/.Simplifier.eobjs/native/dune__exe__Simplifier.cmx)

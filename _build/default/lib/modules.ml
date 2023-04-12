@@ -51,17 +51,29 @@ end
     Its purpose is to give you something that compiles, so you can start working on the other parts.
     *)
 module Substitution : Substitution = struct
-  type 'a substitution = ()
+  type 'a substitution = 'a expr Hashmap.t
 
-  let singleton (x : string) (e : 'a expr) : 'a substitution = ()
-  let empty : 'a substitution = ()
-  let for_all (f : string -> 'a expr -> bool) (subst : 'a substitution) : bool = true
+  let empty : 'a substitution = Hashmap.empty
+  let singleton : (string -> 'a expr -> 'a substitution) = Hashmap.singleton
+  let for_all : ((string -> 'a expr -> bool) -> 'a substitution -> bool) = Hashmap.for_all
   
-  let combine_substitutions (a : 'a substitution option)
-                            (b : 'a substitution option) : 'a substitution option = Some ()
-  exception MalformedSubstitution of string
+  let merge _ exp1_opt exp2_opt : (key -> 'a expr -> 'a expr -> 'a expr option) = match exp1_opt with
+    | None -> exp2_opt
+    | Some exp1 -> (match exp2_opt with
+      | None -> exp1_opt
+      | Some exp2 -> if (exp1=exp2) then Some exp1 else None)
 
-  let rec substitute (subst : 'a substitution) (pattern : string expr) : 'a expr = raise (MalformedSubstitution "Something is still not implemented yet")
+  let combine_substitutions ('a substitution option -> 'a substitution option -> 'a substitution option) = Hashmap.union merge
+  
+  exception MalformedSubstitution of string
+  let rec substitute subst : ('a substitution -> string expr -> 'a expr) = function
+    | Var name -> Hashmap.find name subst
+    | Fun (str, exp_lst) -> Fun (str, List.map (substitute subst) exp_lst)
+    | Int num -> Int num
+    | Binop (bop, exp1, exp2) -> Binop (bop, substitute subst exp1, substitute subst exp2)
+    | Ddx (str, exp) -> (match exp with
+      | Var name -> Hashmap.find name subst
+      | _ -> raise (MalformedSubstitution "Substitution \"Ddx("^str^", expr)\": expr must be of type \"Var(name)\""))
 end
 
 module ApplyRule (Substitution : Substitution) : ApplyRule = struct
