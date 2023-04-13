@@ -1,5 +1,5 @@
 open Ast
-module Hashmap = Map.Make(String)
+module Hashmap = Map.Make(String);;
 
 module type Substitution = sig
   type 'a substitution
@@ -39,14 +39,6 @@ module type Substitution = sig
   val for_all : (string -> 'a expr -> bool) -> 'a substitution -> bool
 end
 
-module type ApplyRule = sig
-  (** apply_rule [rule] [expr] tries to apply the rule [rule] to the expression [expr].
-      If succesful, it returns the rewritten form of [expr], and it returns None otherwise.
-      The function apply_some_rule does the same on lists of expressions,
-      it applies the rule to precisely one element (if possible). *)
-  val apply_rule : string rule -> string expr -> string expr option
-end
-
 module Substitution : Substitution = struct
   type 'a substitution = 'a expr Hashmap.t
 
@@ -78,44 +70,4 @@ module Substitution : Substitution = struct
     | Ddx (str, exp) -> (match exp with (* Note: Possible source of errors. Might need to str or only substitute x or something. :/ *)
       | Var name -> Hashmap.find name subst
       | _ -> raise (MalformedSubstitution "Substitution \"Ddx("^str^", expr)\":\n  Expected: \"Var(name)\"\n  Found: ?")) (* TODO: Print expr. *)
-end
-
-module ApplyRule (Substitution : Substitution) : ApplyRule = struct
-  (** matching [pattern] [term]
-      finds a substitution that can be applied to [pattern] to make
-      it equal [term], if such a substitution exists.
-      Otherwise, it returns None.
-      
-    [matching a b = Some s] ==> [substitute s a = b]
-    (Exists s2. [matching a b = Some s2]) <=> [substitute s a = b] 
-    
-    TODO: write this function!
-    *)
-
-  (** noVars [e] returns whether there are any variables in [e].
-    The purpose of this function is to know if the subexpression
-       can be considered to be a constant, i.e. for a rule like 'd/dx c = 0'.
-    For that reason, the occurrence of d/dx itself is not considered a variable.
-
-    TODO: write this!
-    *)
-  
-  (** To get you started, let's assume all substitutions are okay.
-      This is not true, but it will allow you to work on the other parts of the code first.
-    *)
-  let check_substitution (subst : 'a Substitution.substitution) : bool = true
-  
-  (** apply_rule_toplevel [rule] [expr]
-        tries to apply the rule [rule] to the expression,
-        returning the rewritten form if the rule can be applied to the expression as is.
-        This function does not try to apply the rule to any subexpressions
-
-        TODO: write this! (Currently it always returns None)
-         *)
-  let apply_rule_toplevel (Rule (lhs,rhs) : string rule) (expr : string expr)
-   = None
-  
-  (** This is the main work-horse. *)
-  let rec apply_rule (rl: string rule) (expr: string expr) : string expr option = None
-  
 end
