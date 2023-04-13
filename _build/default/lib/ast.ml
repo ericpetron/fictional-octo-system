@@ -8,9 +8,9 @@ type bop =
 
 (** The type of the abstract syntax tree (AST). *)
 type 'a expr =
-  | Var of 'a
-  | Fun of string * ('a expr) list
   | Int of int
+  | Var of 'a
+  | Fun of string * ('a expr) list (* f(x+2, 7, e) *)
   | Binop of bop * ('a expr) * ('a expr)
   | Ddx of 'a * ('a expr)
 

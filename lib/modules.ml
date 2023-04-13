@@ -13,7 +13,6 @@ module type Substitution = sig
   val combine_substitutions : 'a substitution option -> 'a substitution option -> 'a substitution option
   exception MalformedSubstitution of string
 
-
   (**
       substitute [subst] [pat] replaces the variables in [pat] by
       whatever the subtitution [subst] tells them to be.
@@ -54,15 +53,19 @@ module Substitution : Substitution = struct
   let singleton : (string -> 'a expr -> 'a substitution) = Hashmap.singleton
   let for_all : ((string -> 'a expr -> bool) -> 'a substitution -> bool) = Hashmap.for_all
 
-  (*let merge _ exp1_opt exp2_opt : (key -> 'a expr -> 'a expr -> 'a expr option) = match exp1_opt with
-    | None -> exp2_opt
+  (* let mergeOld _ exp1_opt exp2_opt : (string -> 'a Ast.expr -> 'a Ast.expr -> 'a Ast.expr option) = match exp1_opt with
+    | None -> Some exp2_opt
     | Some exp1 -> (match exp2_opt with
-      | None -> exp1_opt
-      | Some exp2 -> if (exp1=exp2) then Some exp1 else None)*)
-  let merge _ exp1_opt exp2_opt : (key -> 'a expr -> 'a expr -> 'a expr option) = match (exp1_opt, exp2_opt) with
-    | None, x | x, None -> x
-    | Some exp1, Some exp2 -> if (exp1=exp2) then Some exp1 else None
-  let combine_substitutions ('a substitution option -> 'a substitution option -> 'a substitution option) = Hashmap.union merge
+      | None -> Some exp1_opt
+      | Some exp2 -> if (exp1=exp2) then Some exp1 else None) *)
+
+
+  let merge _ (exp1_opt : 'a expr) (exp2_opt : 'a expr) : 'a expr option =
+    match (exp1_opt, exp2_opt) with
+      | None, x | x, None -> x
+      | Some exp1, Some exp2 -> if (exp1=exp2) then Some exp1 else None
+
+  let combine_substitutions : ('a substitution option -> 'a substitution option -> 'a substitution option) = Hashmap.union merge
 
   (** substitute [subst] [pat] replaces the variables in [pat] by
       whatever the subtitution [subst] tells them to be.

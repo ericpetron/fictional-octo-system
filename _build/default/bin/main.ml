@@ -3,16 +3,14 @@ open Simplifier
 
 let usage_msg = Sys.executable_name ^ " [-verbose] <file1> [<file2>] ... -e <expression>"
 let quiet = ref false
-let rules = ref []
 let expressions = ref []
+(* let rules = ref []
 let add_file filename =
    let chan = open_in filename in
-   try
-     while true; do
+   try (while true; do
        rules := parseRule (input_line chan) :: !rules
-     done
-   with End_of_file ->
-     close_in chan
+     done)
+   with End_of_file -> close_in chan *)
 let add_expression expr = expressions := parseExpr expr :: !expressions
 let printExpr e = print_endline (showExpr e)
 let printStep (e,r) = print_endline ("= {"^showRule r^"}");print_string "  ";printExpr e

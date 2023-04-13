@@ -6,9 +6,9 @@
 
 ; (source
 ;  (github username/reponame))
-; 
-; (authors "Author Name")
-; 
+
+(authors "Israel Fuller, Eric Petron, Riley Thompson")
+
 ; (maintainers "Maintainer Name")
 ; 
 ; (license LICENSE)

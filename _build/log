@@ -1,89 +1,159 @@
-# dune build
+# dune test --profile release
 # OCAMLPARAM: unset
 # Shared cache: disabled
 # Workspace root:
-# /Users/ericpetron/Library/CloudStorage/Dropbox/spring23/csci2041/DUNE/fictional-octo-system
-# Auto-detected concurrency: 8
-$ /Users/ericpetron/.opam/default/bin/ocamlc.opt -config > /var/folders/3m/2dvptp656lnfvy01sqn9fzg40000gn/T/dune_05bb09_output
+# /home/eric/Dropbox/spring23/csci2041/DUNE/fictional-octo-system
+# Auto-detected concurrency: 4
+$ /usr/bin/ocamlc.opt -config > /tmp/dune_0635ec_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
-#  ; profile = Dev
+#  ; profile = Release
 #  ; merlin = true
 #  ; for_host = None
 #  ; fdo_target_exe = None
 #  ; build_dir = In_build_dir "default"
-#  ; toplevel_path =
-#      Some External "/Users/ericpetron/.opam/default/lib/toplevel"
-#  ; ocaml_bin = External "/Users/ericpetron/.opam/default/bin"
-#  ; ocaml = Ok External "/Users/ericpetron/.opam/default/bin/ocaml"
-#  ; ocamlc = External "/Users/ericpetron/.opam/default/bin/ocamlc.opt"
-#  ; ocamlopt = Ok External "/Users/ericpetron/.opam/default/bin/ocamlopt.opt"
-#  ; ocamldep = Ok External "/Users/ericpetron/.opam/default/bin/ocamldep.opt"
-#  ; ocamlmklib =
-#      Ok External "/Users/ericpetron/.opam/default/bin/ocamlmklib.opt"
+#  ; toplevel_path = Some External "/home/eric/.opam/default/lib/toplevel"
+#  ; ocaml_bin = External "/usr/bin"
+#  ; ocaml = Ok External "/home/eric/.opam/default/bin/ocaml"
+#  ; ocamlc = External "/usr/bin/ocamlc.opt"
+#  ; ocamlopt = Ok External "/usr/bin/ocamlopt.opt"
+#  ; ocamldep = Ok External "/usr/bin/ocamldep.opt"
+#  ; ocamlmklib = Ok External "/usr/bin/ocamlmklib.opt"
 #  ; env =
 #      map
-#        { "DUNE_OCAML_HARDCODED" : "/Users/ericpetron/.opam/default/lib"
-#        ; "DUNE_OCAML_STDLIB" : "/Users/ericpetron/.opam/default/lib/ocaml"
+#        { "DUNE_OCAML_HARDCODED" : "/home/eric/.opam/default/lib"
+#        ; "DUNE_OCAML_STDLIB" : "/usr/lib/ocaml"
 #        ; "DUNE_SOURCEROOT" :
-#            "/Users/ericpetron/Library/CloudStorage/Dropbox/spring23/csci2041/DUNE/fictional-octo-system"
+#            "/home/eric/Dropbox/spring23/csci2041/DUNE/fictional-octo-system"
 #        ; "INSIDE_DUNE" :
-#            "/Users/ericpetron/Library/CloudStorage/Dropbox/spring23/csci2041/DUNE/fictional-octo-system/_build/default"
+#            "/home/eric/Dropbox/spring23/csci2041/DUNE/fictional-octo-system/_build/default"
 #        ; "OCAMLFIND_IGNORE_DUPS_IN" :
-#            "/Users/ericpetron/Library/CloudStorage/Dropbox/spring23/csci2041/DUNE/fictional-octo-system/_build/install/default/lib"
+#            "/home/eric/Dropbox/spring23/csci2041/DUNE/fictional-octo-system/_build/install/default/lib"
 #        ; "OCAMLPATH" :
-#            "/Users/ericpetron/Library/CloudStorage/Dropbox/spring23/csci2041/DUNE/fictional-octo-system/_build/install/default/lib"
+#            "/home/eric/Dropbox/spring23/csci2041/DUNE/fictional-octo-system/_build/install/default/lib"
 #        ; "OCAMLTOP_INCLUDE_PATH" :
-#            "/Users/ericpetron/Library/CloudStorage/Dropbox/spring23/csci2041/DUNE/fictional-octo-system/_build/install/default/lib/toplevel"
+#            "/home/eric/Dropbox/spring23/csci2041/DUNE/fictional-octo-system/_build/install/default/lib/toplevel"
 #        ; "OCAML_COLOR" : "always"
 #        ; "OPAMCOLOR" : "always"
 #        }
-#  ; findlib_paths = [ External "/Users/ericpetron/.opam/default/lib" ]
+#  ; findlib_paths = [ External "/home/eric/.opam/default/lib" ]
 #  ; arch_sixtyfour = true
 #  ; natdynlink_supported = true
 #  ; supports_shared_libraries = true
 #  ; ocaml_config =
-#      { version = "4.14.1"
-#      ; standard_library_default = "/Users/ericpetron/.opam/default/lib/ocaml"
-#      ; standard_library = "/Users/ericpetron/.opam/default/lib/ocaml"
+#      { version = "4.14.0"
+#      ; standard_library_default = "/usr/lib/ocaml"
+#      ; standard_library = "/usr/lib/ocaml"
 #      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
 #      ; ccomp_type = "cc"
-#      ; c_compiler = "cc"
+#      ; c_compiler = "gcc"
 #      ; ocamlc_cflags =
-#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread" ]
+#          [ "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-pthread"
+#          ; "-g"
+#          ; "-fno-omit-frame-pointer"
+#          ; "-fPIC"
+#          ; "-march=x86-64"
+#          ; "-mtune=generic"
+#          ; "-O2"
+#          ; "-pipe"
+#          ; "-fno-plt"
+#          ; "-fexceptions"
+#          ; "-Wp,-D_FORTIFY_SOURCE=2"
+#          ; "-Wformat"
+#          ; "-Werror=format-security"
+#          ; "-fstack-clash-protection"
+#          ; "-fcf-protection"
+#          ; "-flto=auto"
+#          ; "-ffat-lto-objects"
+#          ]
 #      ; ocamlc_cppflags = [ "-D_FILE_OFFSET_BITS=64" ]
 #      ; ocamlopt_cflags =
-#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread" ]
+#          [ "-O2"
+#          ; "-fno-strict-aliasing"
+#          ; "-fwrapv"
+#          ; "-pthread"
+#          ; "-g"
+#          ; "-fno-omit-frame-pointer"
+#          ; "-fPIC"
+#          ; "-march=x86-64"
+#          ; "-mtune=generic"
+#          ; "-O2"
+#          ; "-pipe"
+#          ; "-fno-plt"
+#          ; "-fexceptions"
+#          ; "-Wp,-D_FORTIFY_SOURCE=2"
+#          ; "-Wformat"
+#          ; "-Werror=format-security"
+#          ; "-fstack-clash-protection"
+#          ; "-fcf-protection"
+#          ; "-flto=auto"
+#          ; "-ffat-lto-objects"
+#          ]
 #      ; ocamlopt_cppflags = [ "-D_FILE_OFFSET_BITS=64" ]
 #      ; bytecomp_c_compiler =
-#          [ "cc"
+#          [ "gcc"
 #          ; "-O2"
 #          ; "-fno-strict-aliasing"
 #          ; "-fwrapv"
 #          ; "-pthread"
+#          ; "-g"
+#          ; "-fno-omit-frame-pointer"
+#          ; "-fPIC"
+#          ; "-march=x86-64"
+#          ; "-mtune=generic"
+#          ; "-O2"
+#          ; "-pipe"
+#          ; "-fno-plt"
+#          ; "-fexceptions"
+#          ; "-Wp,-D_FORTIFY_SOURCE=2"
+#          ; "-Wformat"
+#          ; "-Werror=format-security"
+#          ; "-fstack-clash-protection"
+#          ; "-fcf-protection"
+#          ; "-flto=auto"
+#          ; "-ffat-lto-objects"
 #          ; "-D_FILE_OFFSET_BITS=64"
 #          ]
 #      ; bytecomp_c_libraries = [ "-lm"; "-lpthread" ]
 #      ; native_c_compiler =
-#          [ "cc"
+#          [ "gcc"
 #          ; "-O2"
 #          ; "-fno-strict-aliasing"
 #          ; "-fwrapv"
 #          ; "-pthread"
+#          ; "-g"
+#          ; "-fno-omit-frame-pointer"
+#          ; "-fPIC"
+#          ; "-march=x86-64"
+#          ; "-mtune=generic"
+#          ; "-O2"
+#          ; "-pipe"
+#          ; "-fno-plt"
+#          ; "-fexceptions"
+#          ; "-Wp,-D_FORTIFY_SOURCE=2"
+#          ; "-Wformat"
+#          ; "-Werror=format-security"
+#          ; "-fstack-clash-protection"
+#          ; "-fcf-protection"
+#          ; "-flto=auto"
+#          ; "-ffat-lto-objects"
 #          ; "-D_FILE_OFFSET_BITS=64"
 #          ]
 #      ; native_c_libraries = [ "-lm" ]
 #      ; native_pack_linker = [ "ld"; "-r"; "-o" ]
 #      ; cc_profile = []
-#      ; architecture = "arm64"
+#      ; architecture = "amd64"
 #      ; model = "default"
 #      ; int_size = 63
 #      ; word_size = 64
-#      ; system = "macosx"
-#      ; asm = [ "cc"; "-c"; "-Wno-trigraphs" ]
+#      ; system = "linux"
+#      ; asm = [ "as" ]
 #      ; asm_cfi_supported = true
-#      ; with_frame_pointers = false
+#      ; with_frame_pointers = true
 #      ; ext_exe = ""
 #      ; ext_obj = ".o"
 #      ; ext_asm = ".s"
@@ -92,12 +162,12 @@ $ /Users/ericpetron/.opam/default/bin/ocamlc.opt -config > /var/folders/3m/2dvpt
 #      ; os_type = "Unix"
 #      ; default_executable_name = "a.out"
 #      ; systhread_supported = true
-#      ; host = "aarch64-apple-darwin22.2.0"
-#      ; target = "aarch64-apple-darwin22.2.0"
+#      ; host = "x86_64-pc-linux-gnu"
+#      ; target = "x86_64-pc-linux-gnu"
 #      ; profiling = false
 #      ; flambda = false
 #      ; spacetime = false
-#      ; safe_string = true
+#      ; safe_string = false
 #      ; exec_magic_number = "Caml1999X031"
 #      ; cmi_magic_number = "Caml1999I031"
 #      ; cmo_magic_number = "Caml1999O031"
@@ -113,9 +183,11 @@ $ /Users/ericpetron/.opam/default/bin/ocamlc.opt -config > /var/folders/3m/2dvpt
 #      ; windows_unicode = false
 #      }
 #  }
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/modules.ml) > _build/default/lib/.Simplifier.objs/simplifier__Modules.impl.d
-> File "lib/modules.ml", line 66, characters 29-30:
-> 66 |   let combine_substitutions ('a substitution option -> 'a substitution option -> 'a substitution option) = Hashmap.union merge
->                                   ^
-> Error: Syntax error: operator expected.
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl lib/modules.ml) > _build/default/lib/.Simplifier.objs/simplifier__Modules.impl.d
+$ (cd _build/default && /usr/bin/ocamlc.opt -w -40 -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier__Modules.cmo -c -impl lib/modules.ml)
+> File "lib/modules.ml", line 65, characters 8-12:
+> 65 |       | None, x | x, None -> x
+>              ^^^^
+> Error: This variant pattern is expected to have type 'a Simplifier__.Ast.expr
+>        There is no constructor None within type Simplifier__.Ast.expr
 [2]
