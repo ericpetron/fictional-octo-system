@@ -1,5 +1,5 @@
 open Ast
-module Hashmap = Map.Make(String)
+module Hashmap = Map.Make(String);;
 
 module type Substitution = sig
   type 'a substitution

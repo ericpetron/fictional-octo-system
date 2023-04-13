@@ -48,3 +48,12 @@ let rec apply_to_nf rules expr
      | (Some (e,d)) -> (e,d) :: apply_to_nf rules e
 
 let showRule (Rule (e1,e2)) = showExpr e1 ^ " = " ^ showExpr e2
+
+(* Copied from main.ml*)
+let rules = ref []
+let add_file filename =
+   let chan = open_in filename in
+   try (while true; do
+       rules := parseRule (input_line chan) :: !rules
+     done)
+   with End_of_file -> close_in chan
