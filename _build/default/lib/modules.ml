@@ -1,5 +1,5 @@
 open Ast
-module Hashmap = Map.Make(String);;
+module Hashmap = Map.Make(String)
 
 module type Substitution = sig
   type 'a substitution
@@ -49,23 +49,17 @@ end
 module Substitution : Substitution = struct
   type 'a substitution = 'a expr Hashmap.t
 
-  let empty : 'a substitution = Hashmap.empty
-  let singleton : (string -> 'a expr -> 'a substitution) = Hashmap.singleton
-  let for_all : ((string -> 'a expr -> bool) -> 'a substitution -> bool) = Hashmap.for_all
+  let empty = Hashmap.empty
+  let singleton = Hashmap.singleton
+  let for_all = Hashmap.for_all
 
-  (* let mergeOld _ exp1_opt exp2_opt : (string -> 'a Ast.expr -> 'a Ast.expr -> 'a Ast.expr option) = match exp1_opt with
-    | None -> Some exp2_opt
-    | Some exp1 -> (match exp2_opt with
-      | None -> Some exp1_opt
-      | Some exp2 -> if (exp1=exp2) then Some exp1 else None) *)
-
-
-  let merge _ (exp1_opt : 'a expr) (exp2_opt : 'a Simplifier__.Ast.expr) : 'a Simplifier__.Ast.expr option =
-    match (exp1_opt, exp2_opt) with
+  let combine = Hashmap.union (fun _ x y -> if x=y then Some x else None)
+  let combine_substitutions (a : 'a substitution option) (b : 'a substitution option) : 'a substitution option =
+    match (a, b) with
       | None, x | x, None -> x
-      | Some exp1, Some exp2 -> if (exp1=exp2) then Some exp1 else None
-
-  let combine_substitutions : ('a substitution option -> 'a substitution option -> 'a substitution option) = Hashmap.union merge
+      | Some sub1, Some sub2 -> Some (combine sub1 sub2)
+  
+  
 
   (** substitute [subst] [pat] replaces the variables in [pat] by
       whatever the subtitution [subst] tells them to be.
@@ -73,14 +67,14 @@ module Substitution : Substitution = struct
       An occurrence in 'ddx' requires the variable to be a single variable.
       If it is given an expression instead, the MalformedSubstitution error is raised. *)
   exception MalformedSubstitution of string
-  let rec substitute subst : ('a substitution -> string expr -> 'a expr) = function
+  let rec substitute subst = function
     | Int num -> Int num
     | Var name -> Hashmap.find name subst
     | Fun (str, exp_lst) -> Fun (str, List.map (substitute subst) exp_lst)
     | Binop (bop, exp1, exp2) -> Binop (bop, substitute subst exp1, substitute subst exp2)
     | Ddx (str, exp) -> (match exp with (* Note: Possible source of errors. Might need to str or only substitute x or something. :/ *)
       | Var name -> Hashmap.find name subst
-      | _ -> raise (MalformedSubstitution "Substitution \"Ddx("^str^", expr)\":\n  Expected: \"Var(name)\"\n  Found: ?")) (* TODO: Print expr. *)
+      | _ -> raise (MalformedSubstitution ("Substitution Ddx("^str^", expr)\":\n  Expected: \"Var(name)\"\n  Found: ?"))) (* TODO: Print expr. *)
 end
 
 module ApplyRule (Substitution : Substitution) : ApplyRule = struct
@@ -122,3 +116,24 @@ module ApplyRule (Substitution : Substitution) : ApplyRule = struct
   let rec apply_rule (rl: string rule) (expr: string expr) : string expr option = None
   
 end
+
+
+
+  (* let mergeOld _ exp1_opt exp2_opt : (string -> 'a Ast.expr -> 'a Ast.expr -> 'a Ast.expr option) = match exp1_opt with
+    | None -> Some exp2_opt
+    | Some exp1 -> (match exp2_opt with
+      | None -> Some exp1_opt
+      | Some exp2 -> if (exp1=exp2) then Some exp1 else None) *)
+
+
+  (* let merge _ (exp1_opt : 'a expr) (exp2_opt : 'a expr) : 'a expr option =
+    match (exp1_opt, exp2_opt) with
+      | None, x | x, None -> x
+      | Some exp1, Some exp2 -> if (exp1=exp2) then Some exp1 else None *)
+
+  (*   let merge _ (e1 : 'a expr) (e2 : 'a expr) : 'a expr option = if e1=e2 then Some e1 else None *)
+
+  
+
+  (* let combine_substitutions_old : ('a substitution option -> 'a substitution option -> 'a substitution option) =
+    Hashmap.union (fun _ x y -> if x=y then Some x else None) *)

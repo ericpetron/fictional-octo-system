@@ -4,7 +4,7 @@
 # Workspace root:
 # /home/eric/Dropbox/spring23/csci2041/DUNE/fictional-octo-system
 # Auto-detected concurrency: 4
-$ /usr/bin/ocamlc.opt -config > /tmp/dune_0635ec_output
+$ /usr/bin/ocamlc.opt -config > /tmp/dune_24ba5f_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -183,11 +183,41 @@ $ /usr/bin/ocamlc.opt -config > /tmp/dune_0635ec_output
 #      ; windows_unicode = false
 #      }
 #  }
-$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl lib/modules.ml) > _build/default/lib/.Simplifier.objs/simplifier__Modules.impl.d
 $ (cd _build/default && /usr/bin/ocamlc.opt -w -40 -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier__Modules.cmo -c -impl lib/modules.ml)
-> File "lib/modules.ml", line 65, characters 8-12:
-> 65 |       | None, x | x, None -> x
->              ^^^^
-> Error: This variant pattern is expected to have type 'a Simplifier__.Ast.expr
->        There is no constructor None within type Simplifier__.Ast.expr
+> File "lib/modules.ml", lines 49-78, characters 37-3:
+> 49 | .....................................struct
+> 50 |   type 'a substitution = 'a expr Hashmap.t
+> 51 | 
+> 52 |   let empty = Hashmap.empty
+> 53 |   let singleton = Hashmap.singleton
+> ...
+> 75 |     | Ddx (str, exp) -> (match exp with (* Note: Possible source of errors. Might need to str or only substitute x or something. :/ *)
+> 76 |       | Var name -> Hashmap.find name subst
+> 77 |       | _ -> raise (MalformedSubstitution ("Substitution Ddx("^str^", expr)\":\n  Expected: \"Var(name)\"\n  Found: ?"))) (* TODO: Print expr. *)
+> 78 | end
+> Error: Signature mismatch:
+>        ...
+>        Values do not match:
+>          val combine_substitutions :
+>            '_a substitution option ->
+>            '_a substitution option -> '_a substitution option
+>        is not included in
+>          val combine_substitutions :
+>            'a substitution option ->
+>            'a substitution option -> 'a substitution option
+>        The type
+>          '_a substitution option ->
+>          '_a substitution option -> '_a substitution option
+>        is not compatible with the type
+>          'b substitution option ->
+>          'b substitution option -> 'b substitution option
+>        Type '_a substitution = '_a Simplifier__.Ast.expr Map.Make(String).t
+>        is not compatible with type
+>          'b substitution = 'b Simplifier__.Ast.expr Map.Make(String).t 
+>        Type '_a Simplifier__.Ast.expr = '_a Simplifier__Ast.expr
+>        is not compatible with type
+>          'b Simplifier__.Ast.expr = 'b Simplifier__Ast.expr 
+>        Type '_a is not compatible with type 'b 
+>        File "lib/modules.ml", line 13, characters 2-104: Expected declaration
+>        File "lib/modules.ml", line 57, characters 6-27: Actual declaration
 [2]
