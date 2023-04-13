@@ -1,5 +1,5 @@
 open Ast
-module Hashmap = Map.Make(String)
+module Hashmap = Map.Make(String);;
 
 module type Substitution = sig
   type 'a substitution
@@ -53,13 +53,12 @@ module Substitution : Substitution = struct
   let singleton = Hashmap.singleton
   let for_all = Hashmap.for_all
 
-  let combine = Hashmap.union (fun _ x y -> if x=y then Some x else None)
-  let combine_substitutions (a : 'a substitution option) (b : 'a substitution option) : 'a substitution option =
-    match (a, b) with
+  (* Note: It looks like you should be able to remove the a and b and just use *)
+  let combine a b = Hashmap.union (fun _ x y -> if x=y then Some x else None) a b
+  let combine_substitutions (sub1_opt : 'a substitution option) (sub2_opt : 'a substitution option) : 'a substitution option =
+    match sub1_opt,sub2_opt with
       | None, x | x, None -> x
       | Some sub1, Some sub2 -> Some (combine sub1 sub2)
-  
-  
 
   (** substitute [subst] [pat] replaces the variables in [pat] by
       whatever the subtitution [subst] tells them to be.
@@ -100,6 +99,7 @@ module ApplyRule (Substitution : Substitution) : ApplyRule = struct
   (** To get you started, let's assume all substitutions are okay.
       This is not true, but it will allow you to work on the other parts of the code first.
     *)
+    
   let check_substitution (subst : 'a Substitution.substitution) : bool = true
   
   (** apply_rule_toplevel [rule] [expr]
@@ -114,7 +114,6 @@ module ApplyRule (Substitution : Substitution) : ApplyRule = struct
   
   (** This is the main work-horse. *)
   let rec apply_rule (rl: string rule) (expr: string expr) : string expr option = None
-  
 end
 
 
