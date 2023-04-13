@@ -53,7 +53,9 @@ module Substitution : Substitution = struct
   let singleton = Hashmap.singleton
   let for_all = Hashmap.for_all
 
-  let combine a b= Hashmap.union (fun _ x y -> if x=y then Some x else None) a b
+  (* Note: It looks like you should be able to remove the a and b and just use
+     partial function application... but doing this breaks everything for some reason... *)
+  let combine a b = Hashmap.union (fun _ x y -> if x=y then Some x else None) a b
   let combine_substitutions (sub1_opt : 'a substitution option) (sub2_opt : 'a substitution option) : 'a substitution option =
     match sub1_opt,sub2_opt with
       | None, x | x, None -> x
