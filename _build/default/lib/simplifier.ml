@@ -1,5 +1,5 @@
-open Ast
-open Modules
+include Ast
+include Modules
 
 let showOp = function 
   | Subt -> "-"

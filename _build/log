@@ -4,7 +4,7 @@
 # Workspace root:
 # /home/eric/Dropbox/spring23/csci2041/DUNE/fictional-octo-system
 # Auto-detected concurrency: 4
-$ /usr/bin/ocamlc.opt -config > /tmp/dune_27b98b_output
+$ /usr/bin/ocamlc.opt -config > /tmp/dune_c2a0fd_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -183,27 +183,3 @@ $ /usr/bin/ocamlc.opt -config > /tmp/dune_27b98b_output
 #      ; windows_unicode = false
 #      }
 #  }
-$ (cd _build/default && /usr/bin/ocamlc.opt -w -40 -g -bin-annot -I test/.Simplifier.eobjs/byte -I lib/.Simplifier.objs/byte -no-alias-deps -o test/.Simplifier.eobjs/byte/dune__exe__Simplifier.cmo -c -impl test/Simplifier.ml)
-$ (cd _build/default && /usr/bin/ocamlopt.opt -w -40 -g -I test/.Simplifier.eobjs/byte -I test/.Simplifier.eobjs/native -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -o test/.Simplifier.eobjs/native/dune__exe__Simplifier.cmx -c -impl test/Simplifier.ml)
-$ (cd _build/default && /usr/bin/ocamlopt.opt -w -40 -g -o test/Simplifier.exe lib/Simplifier.cmxa test/.Simplifier.eobjs/native/dune__exe__Simplifier.cmx)
-$ (cd _build/default/test && ./Simplifier.exe)
-> d/dx (a^b) = ((b*(a^(b-1)))*(d/dx a))+(((a^b)*log(a))*(d/dx b))
-> d/dx (a^n) = (n*(a^(n-1)))*(d/dx a)
-> d/dx (c^b) = (log(c)*(c^b))*(d/dx b)
-> d/dx c = 0
-> d/dx (a/b) = (((d/dx a)*b)-((d/dx b)*a))/(b^2)
-> d/dx (a-b) = (d/dx a)-(d/dx b)
-> d/dx (a+b) = (d/dx a)+(d/dx b)
-> d/dx (a*b) = ((d/dx a)*b)+(a*(d/dx b))
-> d/dx x = 1
-> x^0 = 1
-> x^1 = x
-> 3-2 = 2
-> 2-1 = 1
-> x-0 = x
-> x*0 = 0
-> 0*x = 0
-> 1*x = x
-> x*1 = x
-> 0+x = x
-> x+0 = x

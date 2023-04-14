@@ -1,6 +1,0 @@
-(library
- (name Simplifier))
-(menhir
- (modules parser))
-
-(ocamllex lexer)

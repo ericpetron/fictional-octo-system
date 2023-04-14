@@ -1,6 +1,25 @@
 open Ast
 module Hashmap = Map.Make(String);;
 
+(* Declare some useful functions for testing.*)
+
+(* Convert binary operations to strings. *)
+let string_bop = function
+  | Add -> "+"
+  | Subt -> "-"
+  | Mult -> "*"
+  | Div -> "/"
+  | Pow -> "^"
+
+(* Convert expressions to strings. *)
+let rec string_exp = function
+  | Int num -> string_of_int num
+  | Var name -> name
+  | Fun (str, exp_lst) -> str ^ "(" ^ (String.concat ", " (List.map string_exp exp_lst)) ^ ")"
+  | Binop (bop, exp1, exp2) -> string_exp exp1 ^ string_bop bop ^ string_exp exp2
+  | Ddx (str, exp) -> "d/d"^str^" "^(string_exp exp)
+
+
 module type Substitution = sig
   type 'a substitution
 
@@ -61,11 +80,6 @@ module Substitution : Substitution = struct
       | None, x | x, None -> x
       | Some sub1, Some sub2 -> Some (combine sub1 sub2)
 
-  (** substitute [subst] [pat] replaces the variables in [pat] by
-      whatever the subtitution [subst] tells them to be.
-      If a variable occurs in [pat] that is not in [subst], a NotFound error is raised.
-      An occurrence in 'ddx' requires the variable to be a single variable.
-      If it is given an expression instead, the MalformedSubstitution error is raised. *)
   exception MalformedSubstitution of string
   let rec substitute subst = function
     | Int num -> Int num
@@ -74,7 +88,11 @@ module Substitution : Substitution = struct
     | Binop (bop, exp1, exp2) -> Binop (bop, substitute subst exp1, substitute subst exp2)
     | Ddx (str, exp) -> (match exp with (* Note: Possible source of errors. Might need to str or only substitute x or something. :/ *)
       | Var name -> Hashmap.find name subst
-      | _ -> raise (MalformedSubstitution ("Substitution Ddx("^str^", expr)\":\n  Expected: \"Var(name)\"\n  Found: ?"))) (* TODO: Print expr. *)
+      | _ -> let msg =
+        ("Substitution Ddx("^str^", expr)\":\n  
+          Expected: \"Var(name)\"\n  
+          Found: "^(string_exp exp))
+        in raise (MalformedSubstitution msg))
 end
 
 module ApplyRule (Substitution : Substitution) : ApplyRule = struct
@@ -116,24 +134,3 @@ module ApplyRule (Substitution : Substitution) : ApplyRule = struct
   (** This is the main work-horse. *)
   let rec apply_rule (rl: string rule) (expr: string expr) : string expr option = None
 end
-
-
-
-  (* let mergeOld _ exp1_opt exp2_opt : (string -> 'a Ast.expr -> 'a Ast.expr -> 'a Ast.expr option) = match exp1_opt with
-    | None -> Some exp2_opt
-    | Some exp1 -> (match exp2_opt with
-      | None -> Some exp1_opt
-      | Some exp2 -> if (exp1=exp2) then Some exp1 else None) *)
-
-
-  (* let merge _ (exp1_opt : 'a expr) (exp2_opt : 'a expr) : 'a expr option =
-    match (exp1_opt, exp2_opt) with
-      | None, x | x, None -> x
-      | Some exp1, Some exp2 -> if (exp1=exp2) then Some exp1 else None *)
-
-  (*   let merge _ (e1 : 'a expr) (e2 : 'a expr) : 'a expr option = if e1=e2 then Some e1 else None *)
-
-  
-
-  (* let combine_substitutions_old : ('a substitution option -> 'a substitution option -> 'a substitution option) =
-    Hashmap.union (fun _ x y -> if x=y then Some x else None) *)
