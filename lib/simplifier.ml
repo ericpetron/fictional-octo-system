@@ -1,23 +1,6 @@
 include Ast
 include Modules
 
-let showOp = function 
-  | Subt -> "-"
-  | Add -> "+"
-  | Mult -> "*"
-  | Div -> "/"
-  | Pow -> "^"
-let rec showExpr = function
-  | Fun (f, lst) -> f^"("^String.concat "," (List.map showExpr lst) ^")"
-  | Int i -> string_of_int i
-  | Var i -> i
-  | Binop (op,l,r) -> showExprParens l ^ showOp op ^ showExprParens r
-  | Ddx (v,e) -> "d/d"^v^" "^showExprParens e
-and showExprParens e = match e with 
-  | Binop _ -> "("^showExpr e ^")"
-  | Ddx _ -> "("^showExpr e ^")"
-  | _ -> showExpr e
-
 (** [parseExpr s] parses [s] into an AST. *)
 let parseExpr (s : string) : string expr =
   let lexbuf = Lexing.from_string s in
@@ -30,8 +13,7 @@ let parseRule (s : string) : string rule =
     let ast = Parser.rule Lexer.read lexbuf in
     ast
 
-
-
+    
 module ApplyRule = ApplyRule (Substitution)
 
 let rec apply_rules expr =

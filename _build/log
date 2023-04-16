@@ -2,9 +2,9 @@
 # OCAMLPARAM: unset
 # Shared cache: disabled
 # Workspace root:
-# /home/eric/Dropbox/spring23/csci2041/DUNE/fictional-octo-system
-# Auto-detected concurrency: 4
-$ /usr/bin/ocamlc.opt -config > /tmp/dune_c2a0fd_output
+# /Users/ericpetron/Library/CloudStorage/Dropbox/spring23/csci2041/DUNE/fictional-octo-system
+# Auto-detected concurrency: 8
+$ /Users/ericpetron/.opam/default/bin/ocamlc.opt -config > /var/folders/3m/2dvptp656lnfvy01sqn9fzg40000gn/T/dune_279c09_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -13,147 +13,77 @@ $ /usr/bin/ocamlc.opt -config > /tmp/dune_c2a0fd_output
 #  ; for_host = None
 #  ; fdo_target_exe = None
 #  ; build_dir = In_build_dir "default"
-#  ; toplevel_path = Some External "/home/eric/.opam/default/lib/toplevel"
-#  ; ocaml_bin = External "/usr/bin"
-#  ; ocaml = Ok External "/home/eric/.opam/default/bin/ocaml"
-#  ; ocamlc = External "/usr/bin/ocamlc.opt"
-#  ; ocamlopt = Ok External "/usr/bin/ocamlopt.opt"
-#  ; ocamldep = Ok External "/usr/bin/ocamldep.opt"
-#  ; ocamlmklib = Ok External "/usr/bin/ocamlmklib.opt"
+#  ; toplevel_path =
+#      Some External "/Users/ericpetron/.opam/default/lib/toplevel"
+#  ; ocaml_bin = External "/Users/ericpetron/.opam/default/bin"
+#  ; ocaml = Ok External "/Users/ericpetron/.opam/default/bin/ocaml"
+#  ; ocamlc = External "/Users/ericpetron/.opam/default/bin/ocamlc.opt"
+#  ; ocamlopt = Ok External "/Users/ericpetron/.opam/default/bin/ocamlopt.opt"
+#  ; ocamldep = Ok External "/Users/ericpetron/.opam/default/bin/ocamldep.opt"
+#  ; ocamlmklib =
+#      Ok External "/Users/ericpetron/.opam/default/bin/ocamlmklib.opt"
 #  ; env =
 #      map
-#        { "DUNE_OCAML_HARDCODED" : "/home/eric/.opam/default/lib"
-#        ; "DUNE_OCAML_STDLIB" : "/usr/lib/ocaml"
+#        { "DUNE_OCAML_HARDCODED" : "/Users/ericpetron/.opam/default/lib"
+#        ; "DUNE_OCAML_STDLIB" : "/Users/ericpetron/.opam/default/lib/ocaml"
 #        ; "DUNE_SOURCEROOT" :
-#            "/home/eric/Dropbox/spring23/csci2041/DUNE/fictional-octo-system"
+#            "/Users/ericpetron/Library/CloudStorage/Dropbox/spring23/csci2041/DUNE/fictional-octo-system"
 #        ; "INSIDE_DUNE" :
-#            "/home/eric/Dropbox/spring23/csci2041/DUNE/fictional-octo-system/_build/default"
+#            "/Users/ericpetron/Library/CloudStorage/Dropbox/spring23/csci2041/DUNE/fictional-octo-system/_build/default"
 #        ; "OCAMLFIND_IGNORE_DUPS_IN" :
-#            "/home/eric/Dropbox/spring23/csci2041/DUNE/fictional-octo-system/_build/install/default/lib"
+#            "/Users/ericpetron/Library/CloudStorage/Dropbox/spring23/csci2041/DUNE/fictional-octo-system/_build/install/default/lib"
 #        ; "OCAMLPATH" :
-#            "/home/eric/Dropbox/spring23/csci2041/DUNE/fictional-octo-system/_build/install/default/lib"
+#            "/Users/ericpetron/Library/CloudStorage/Dropbox/spring23/csci2041/DUNE/fictional-octo-system/_build/install/default/lib"
 #        ; "OCAMLTOP_INCLUDE_PATH" :
-#            "/home/eric/Dropbox/spring23/csci2041/DUNE/fictional-octo-system/_build/install/default/lib/toplevel"
+#            "/Users/ericpetron/Library/CloudStorage/Dropbox/spring23/csci2041/DUNE/fictional-octo-system/_build/install/default/lib/toplevel"
 #        ; "OCAML_COLOR" : "always"
 #        ; "OPAMCOLOR" : "always"
 #        }
-#  ; findlib_paths = [ External "/home/eric/.opam/default/lib" ]
+#  ; findlib_paths = [ External "/Users/ericpetron/.opam/default/lib" ]
 #  ; arch_sixtyfour = true
 #  ; natdynlink_supported = true
 #  ; supports_shared_libraries = true
 #  ; ocaml_config =
-#      { version = "4.14.0"
-#      ; standard_library_default = "/usr/lib/ocaml"
-#      ; standard_library = "/usr/lib/ocaml"
+#      { version = "4.14.1"
+#      ; standard_library_default = "/Users/ericpetron/.opam/default/lib/ocaml"
+#      ; standard_library = "/Users/ericpetron/.opam/default/lib/ocaml"
 #      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
 #      ; ccomp_type = "cc"
-#      ; c_compiler = "gcc"
+#      ; c_compiler = "cc"
 #      ; ocamlc_cflags =
-#          [ "-O2"
-#          ; "-fno-strict-aliasing"
-#          ; "-fwrapv"
-#          ; "-pthread"
-#          ; "-g"
-#          ; "-fno-omit-frame-pointer"
-#          ; "-fPIC"
-#          ; "-march=x86-64"
-#          ; "-mtune=generic"
-#          ; "-O2"
-#          ; "-pipe"
-#          ; "-fno-plt"
-#          ; "-fexceptions"
-#          ; "-Wp,-D_FORTIFY_SOURCE=2"
-#          ; "-Wformat"
-#          ; "-Werror=format-security"
-#          ; "-fstack-clash-protection"
-#          ; "-fcf-protection"
-#          ; "-flto=auto"
-#          ; "-ffat-lto-objects"
-#          ]
+#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread" ]
 #      ; ocamlc_cppflags = [ "-D_FILE_OFFSET_BITS=64" ]
 #      ; ocamlopt_cflags =
-#          [ "-O2"
-#          ; "-fno-strict-aliasing"
-#          ; "-fwrapv"
-#          ; "-pthread"
-#          ; "-g"
-#          ; "-fno-omit-frame-pointer"
-#          ; "-fPIC"
-#          ; "-march=x86-64"
-#          ; "-mtune=generic"
-#          ; "-O2"
-#          ; "-pipe"
-#          ; "-fno-plt"
-#          ; "-fexceptions"
-#          ; "-Wp,-D_FORTIFY_SOURCE=2"
-#          ; "-Wformat"
-#          ; "-Werror=format-security"
-#          ; "-fstack-clash-protection"
-#          ; "-fcf-protection"
-#          ; "-flto=auto"
-#          ; "-ffat-lto-objects"
-#          ]
+#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread" ]
 #      ; ocamlopt_cppflags = [ "-D_FILE_OFFSET_BITS=64" ]
 #      ; bytecomp_c_compiler =
-#          [ "gcc"
+#          [ "cc"
 #          ; "-O2"
 #          ; "-fno-strict-aliasing"
 #          ; "-fwrapv"
 #          ; "-pthread"
-#          ; "-g"
-#          ; "-fno-omit-frame-pointer"
-#          ; "-fPIC"
-#          ; "-march=x86-64"
-#          ; "-mtune=generic"
-#          ; "-O2"
-#          ; "-pipe"
-#          ; "-fno-plt"
-#          ; "-fexceptions"
-#          ; "-Wp,-D_FORTIFY_SOURCE=2"
-#          ; "-Wformat"
-#          ; "-Werror=format-security"
-#          ; "-fstack-clash-protection"
-#          ; "-fcf-protection"
-#          ; "-flto=auto"
-#          ; "-ffat-lto-objects"
 #          ; "-D_FILE_OFFSET_BITS=64"
 #          ]
 #      ; bytecomp_c_libraries = [ "-lm"; "-lpthread" ]
 #      ; native_c_compiler =
-#          [ "gcc"
+#          [ "cc"
 #          ; "-O2"
 #          ; "-fno-strict-aliasing"
 #          ; "-fwrapv"
 #          ; "-pthread"
-#          ; "-g"
-#          ; "-fno-omit-frame-pointer"
-#          ; "-fPIC"
-#          ; "-march=x86-64"
-#          ; "-mtune=generic"
-#          ; "-O2"
-#          ; "-pipe"
-#          ; "-fno-plt"
-#          ; "-fexceptions"
-#          ; "-Wp,-D_FORTIFY_SOURCE=2"
-#          ; "-Wformat"
-#          ; "-Werror=format-security"
-#          ; "-fstack-clash-protection"
-#          ; "-fcf-protection"
-#          ; "-flto=auto"
-#          ; "-ffat-lto-objects"
 #          ; "-D_FILE_OFFSET_BITS=64"
 #          ]
 #      ; native_c_libraries = [ "-lm" ]
 #      ; native_pack_linker = [ "ld"; "-r"; "-o" ]
 #      ; cc_profile = []
-#      ; architecture = "amd64"
+#      ; architecture = "arm64"
 #      ; model = "default"
 #      ; int_size = 63
 #      ; word_size = 64
-#      ; system = "linux"
-#      ; asm = [ "as" ]
+#      ; system = "macosx"
+#      ; asm = [ "cc"; "-c"; "-Wno-trigraphs" ]
 #      ; asm_cfi_supported = true
-#      ; with_frame_pointers = true
+#      ; with_frame_pointers = false
 #      ; ext_exe = ""
 #      ; ext_obj = ".o"
 #      ; ext_asm = ".s"
@@ -162,12 +92,12 @@ $ /usr/bin/ocamlc.opt -config > /tmp/dune_c2a0fd_output
 #      ; os_type = "Unix"
 #      ; default_executable_name = "a.out"
 #      ; systhread_supported = true
-#      ; host = "x86_64-pc-linux-gnu"
-#      ; target = "x86_64-pc-linux-gnu"
+#      ; host = "aarch64-apple-darwin22.2.0"
+#      ; target = "aarch64-apple-darwin22.2.0"
 #      ; profiling = false
 #      ; flambda = false
 #      ; spacetime = false
-#      ; safe_string = false
+#      ; safe_string = true
 #      ; exec_magic_number = "Caml1999X031"
 #      ; cmi_magic_number = "Caml1999I031"
 #      ; cmo_magic_number = "Caml1999O031"
@@ -183,3 +113,55 @@ $ /usr/bin/ocamlc.opt -config > /tmp/dune_c2a0fd_output
 #      ; windows_unicode = false
 #      }
 #  }
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w -40 -w -49 -nopervasives -nostdlib -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -o lib/.Simplifier.objs/byte/simplifier__.cmo -c -impl lib/simplifier__.ml-gen)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/simplifier.ml) > _build/default/lib/.Simplifier.objs/simplifier.impl.d
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamllex -q -o lib/lexer.ml lib/lexer.mll)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/ast.ml) > _build/default/lib/.Simplifier.objs/simplifier__Ast.impl.d
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/modules.ml) > _build/default/lib/.Simplifier.objs/simplifier__Modules.impl.d
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/lexer.ml) > _build/default/lib/.Simplifier.objs/simplifier__Lexer.impl.d
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/menhir lib/parser.mly --base lib/parser --infer-write-query lib/parser__mock.ml.mock)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w -40 -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier__Ast.cmo -c -impl lib/ast.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/parser__mock.ml.mock) > _build/default/lib/.Simplifier.objs/parser__mock.impl.d
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w -40 -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier__Modules.cmo -c -impl lib/modules.ml)
+$ (cd _build/.sandbox/5d8858a96ab52892c23c9aa7cd7bfb51/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w -40 -g -I lib/.Simplifier.objs/byte -open Simplifier__ -short-paths -i -impl lib/parser__mock.ml.mock) > _build/.sandbox/5d8858a96ab52892c23c9aa7cd7bfb51/default/lib/parser__mock.mli.inferred
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/menhir lib/parser.mly --base lib/parser --infer-read-reply lib/parser__mock.mli.inferred)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -intf lib/parser.mli) > _build/default/lib/.Simplifier.objs/simplifier__Parser.intf.d
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/parser.ml) > _build/default/lib/.Simplifier.objs/simplifier__Parser.impl.d
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w -40 -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier__Parser.cmi -c -intf lib/parser.mli)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w -40 -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier__Lexer.cmo -c -impl lib/lexer.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w -40 -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier.cmo -c -impl lib/simplifier.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w -40 -g -bin-annot -I test/.Simplifier.eobjs/byte -I lib/.Simplifier.objs/byte -no-alias-deps -o test/.Simplifier.eobjs/byte/dune__exe__Simplifier.cmo -c -impl test/Simplifier.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w -40 -w -49 -nopervasives -nostdlib -g -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml-gen -no-alias-deps -o lib/.Simplifier.objs/native/simplifier__.cmx -c -impl lib/simplifier__.ml-gen)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w -40 -g -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -open Simplifier__ -o lib/.Simplifier.objs/native/simplifier__Ast.cmx -c -impl lib/ast.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w -40 -g -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -open Simplifier__ -o lib/.Simplifier.objs/native/simplifier__Modules.cmx -c -impl lib/modules.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w -40 -g -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -open Simplifier__ -o lib/.Simplifier.objs/native/simplifier__Parser.cmx -c -impl lib/parser.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w -40 -g -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -open Simplifier__ -o lib/.Simplifier.objs/native/simplifier__Lexer.cmx -c -impl lib/lexer.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w -40 -g -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -open Simplifier__ -o lib/.Simplifier.objs/native/simplifier.cmx -c -impl lib/simplifier.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w -40 -g -a -o lib/Simplifier.cmxa lib/.Simplifier.objs/native/simplifier__.cmx lib/.Simplifier.objs/native/simplifier__Ast.cmx lib/.Simplifier.objs/native/simplifier__Parser.cmx lib/.Simplifier.objs/native/simplifier__Lexer.cmx lib/.Simplifier.objs/native/simplifier__Modules.cmx lib/.Simplifier.objs/native/simplifier.cmx)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w -40 -g -I test/.Simplifier.eobjs/byte -I test/.Simplifier.eobjs/native -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -o test/.Simplifier.eobjs/native/dune__exe__Simplifier.cmx -c -impl test/Simplifier.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w -40 -g -o test/Simplifier.exe lib/Simplifier.cmxa test/.Simplifier.eobjs/native/dune__exe__Simplifier.cmx)
+$ (cd _build/default/test && ./Simplifier.exe)
+> d/dx (a^b) = ((b*(a^(b-1)))*(d/dx a))+(((a^b)*log(a))*(d/dx b))
+> d/dx (a^n) = (n*(a^(n-1)))*(d/dx a)
+> d/dx (c^b) = (log(c)*(c^b))*(d/dx b)
+> d/dx c = 0
+> d/dx (a/b) = (((d/dx a)*b)-((d/dx b)*a))/(b^2)
+> d/dx (a-b) = (d/dx a)-(d/dx b)
+> d/dx (a+b) = (d/dx a)+(d/dx b)
+> d/dx (a*b) = ((d/dx a)*b)+(a*(d/dx b))
+> d/dx x = 1
+> x^0 = 1
+> x^1 = x
+> 3-2 = 2
+> 2-1 = 1
+> x-0 = x
+> x*0 = 0
+> 0*x = 0
+> 1*x = x
+> x*1 = x
+> 0+x = x
+> x+0 = x
+> exp1: "f(a,x,2)", expected value: f(a, x, 2)
+> exp2: "f(b+c,c,2)", expected value: f(b+c, c, 2)
+> exp3: "f((9+c)+3,3,2)", expected value: f((9+c)+3, 3, 2)
+> exp4: "f((9+3)+3,3,2)", expected value: f((9+3)+3, 3, 2)

@@ -1,23 +1,23 @@
 open Ast
 module Hashmap = Map.Make(String);;
 
-(* Declare some useful functions for testing.*)
-
-(* Convert binary operations to strings. *)
-let string_bop = function
+(* Useful toString functions for testing.*)
+let showOp = function 
   | Add -> "+"
   | Subt -> "-"
   | Mult -> "*"
   | Div -> "/"
   | Pow -> "^"
-
-(* Convert expressions to strings. *)
-let rec string_exp = function
-  | Int num -> string_of_int num
-  | Var name -> name
-  | Fun (str, exp_lst) -> str ^ "(" ^ (String.concat ", " (List.map string_exp exp_lst)) ^ ")"
-  | Binop (bop, exp1, exp2) -> string_exp exp1 ^ string_bop bop ^ string_exp exp2
-  | Ddx (str, exp) -> "d/d"^str^" "^(string_exp exp)
+let rec showExpr = function
+  | Int n -> string_of_int n
+  | Var x -> x
+  | Fun (f, lst) -> f^"("^String.concat "," (List.map showExpr lst) ^")"
+  | Binop (op, left, right) -> showExprParens left ^ showOp op ^ showExprParens right
+  | Ddx (x, exp) -> "d/d"^x^" "^showExprParens exp
+and showExprParens exp = match exp with 
+  | Binop _ -> "("^showExpr exp ^")"
+  | Ddx _ -> "("^showExpr exp ^")"
+  | _ -> showExpr exp
 
 
 module type Substitution = sig
@@ -72,13 +72,11 @@ module Substitution : Substitution = struct
   let singleton = Hashmap.singleton
   let for_all = Hashmap.for_all
 
-  (* Note: It looks like you should be able to remove the a and b and just use
-     partial function application... but doing this breaks everything for some reason... *)
-  let combine a b = Hashmap.union (fun _ x y -> if x=y then Some x else None) a b
-  let combine_substitutions (sub1_opt : 'a substitution option) (sub2_opt : 'a substitution option) : 'a substitution option =
+  exception E
+  let combine_substitutions sub1_opt sub2_opt =
     match sub1_opt,sub2_opt with
-      | None, x | x, None -> x
-      | Some sub1, Some sub2 -> Some (combine sub1 sub2)
+      | None, _ | _, None -> None
+      | Some sub1, Some sub2 -> try Some (Hashmap.union (fun _ _ _ -> raise E) sub1 sub2) with E -> None
 
   exception MalformedSubstitution of string
   let rec substitute subst = function
@@ -91,7 +89,7 @@ module Substitution : Substitution = struct
       | _ -> let msg =
         ("Substitution Ddx("^str^", expr)\":\n  
           Expected: \"Var(name)\"\n  
-          Found: "^(string_exp exp))
+          Found: "^(showExpr exp))
         in raise (MalformedSubstitution msg))
 end
 

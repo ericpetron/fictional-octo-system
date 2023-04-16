@@ -7,7 +7,7 @@
 ; (source
 ;  (github username/reponame))
 
-(authors "Israel Fuller, Eric Petron, Riley Thompson")
+(authors "Israel Fuller (fulle637), Eric Petron (Petro227), Riley Thompson (Thom7981)")
 
 ; (maintainers "Maintainer Name")
 ; 

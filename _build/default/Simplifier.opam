@@ -3,7 +3,9 @@ opam-version: "2.0"
 synopsis: "A solver for differential equations"
 description:
   "Simplifies expressions by applying rewrite rules from left to right. This is intended to help solve differential equations."
-authors: ["Israel Fuller, Eric Petron, Riley Thompson"]
+authors: [
+  "Israel Fuller (fulle637), Eric Petron (Petro227), Riley Thompson (Thom7981)"
+]
 depends: ["ocaml" "dune"]
 build: [
   ["dune" "subst"] {pinned}
