@@ -1,1 +1,1 @@
-lib/simplifier.ml: ApplyRule Ast Lexer Lexing List Modules Parser Substitution
+lib/simplifier.ml: ApplyRule Arg Ast Lexer Lexing List Modules Parser Substitution

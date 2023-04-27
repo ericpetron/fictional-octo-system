@@ -1,14 +1,14 @@
-# dune test --profile release
+# dune build
 # OCAMLPARAM: unset
 # Shared cache: disabled
 # Workspace root:
 # /Users/ericpetron/Library/CloudStorage/Dropbox/spring23/csci2041/DUNE/fictional-octo-system
 # Auto-detected concurrency: 8
-$ /Users/ericpetron/.opam/default/bin/ocamlc.opt -config > /var/folders/3m/2dvptp656lnfvy01sqn9fzg40000gn/T/dune_279c09_output
+$ /Users/ericpetron/.opam/default/bin/ocamlc.opt -config > /var/folders/3m/2dvptp656lnfvy01sqn9fzg40000gn/T/dune_93974e_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
-#  ; profile = Release
+#  ; profile = Dev
 #  ; merlin = true
 #  ; for_host = None
 #  ; fdo_target_exe = None
@@ -113,55 +113,37 @@ $ /Users/ericpetron/.opam/default/bin/ocamlc.opt -config > /var/folders/3m/2dvpt
 #      ; windows_unicode = false
 #      }
 #  }
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w -40 -w -49 -nopervasives -nostdlib -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -o lib/.Simplifier.objs/byte/simplifier__.cmo -c -impl lib/simplifier__.ml-gen)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/simplifier.ml) > _build/default/lib/.Simplifier.objs/simplifier.impl.d
 $ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamllex -q -o lib/lexer.ml lib/lexer.mll)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/ast.ml) > _build/default/lib/.Simplifier.objs/simplifier__Ast.impl.d
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/modules.ml) > _build/default/lib/.Simplifier.objs/simplifier__Modules.impl.d
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/lexer.ml) > _build/default/lib/.Simplifier.objs/simplifier__Lexer.impl.d
 $ (cd _build/default && /Users/ericpetron/.opam/default/bin/menhir lib/parser.mly --base lib/parser --infer-write-query lib/parser__mock.ml.mock)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w -40 -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier__Ast.cmo -c -impl lib/ast.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -opaque -o lib/.Simplifier.objs/byte/simplifier__.cmo -c -impl lib/simplifier__.ml-gen)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/simplifier.ml) > _build/default/lib/.Simplifier.objs/simplifier.impl.d
 $ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/parser__mock.ml.mock) > _build/default/lib/.Simplifier.objs/parser__mock.impl.d
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w -40 -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier__Modules.cmo -c -impl lib/modules.ml)
-$ (cd _build/.sandbox/5d8858a96ab52892c23c9aa7cd7bfb51/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w -40 -g -I lib/.Simplifier.objs/byte -open Simplifier__ -short-paths -i -impl lib/parser__mock.ml.mock) > _build/.sandbox/5d8858a96ab52892c23c9aa7cd7bfb51/default/lib/parser__mock.mli.inferred
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/ast.ml) > _build/default/lib/.Simplifier.objs/simplifier__Ast.impl.d
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/lexer.ml) > _build/default/lib/.Simplifier.objs/simplifier__Lexer.impl.d
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/modules.ml) > _build/default/lib/.Simplifier.objs/simplifier__Modules.impl.d
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -opaque -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier__Ast.cmo -c -impl lib/ast.ml)
+$ (cd _build/.sandbox/01f61aadc8b13a94dc250abc327bbf1d/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.Simplifier.objs/byte -open Simplifier__ -short-paths -i -impl lib/parser__mock.ml.mock) > _build/.sandbox/01f61aadc8b13a94dc250abc327bbf1d/default/lib/parser__mock.mli.inferred
 $ (cd _build/default && /Users/ericpetron/.opam/default/bin/menhir lib/parser.mly --base lib/parser --infer-read-reply lib/parser__mock.mli.inferred)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -opaque -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier__Modules.cmo -c -impl lib/modules.ml)
 $ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -intf lib/parser.mli) > _build/default/lib/.Simplifier.objs/simplifier__Parser.intf.d
 $ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamldep.opt -modules -impl lib/parser.ml) > _build/default/lib/.Simplifier.objs/simplifier__Parser.impl.d
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w -40 -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier__Parser.cmi -c -intf lib/parser.mli)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w -40 -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier__Lexer.cmo -c -impl lib/lexer.ml)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w -40 -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier.cmo -c -impl lib/simplifier.ml)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w -40 -g -bin-annot -I test/.Simplifier.eobjs/byte -I lib/.Simplifier.objs/byte -no-alias-deps -o test/.Simplifier.eobjs/byte/dune__exe__Simplifier.cmo -c -impl test/Simplifier.ml)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w -40 -w -49 -nopervasives -nostdlib -g -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml-gen -no-alias-deps -o lib/.Simplifier.objs/native/simplifier__.cmx -c -impl lib/simplifier__.ml-gen)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w -40 -g -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -open Simplifier__ -o lib/.Simplifier.objs/native/simplifier__Ast.cmx -c -impl lib/ast.ml)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w -40 -g -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -open Simplifier__ -o lib/.Simplifier.objs/native/simplifier__Modules.cmx -c -impl lib/modules.ml)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w -40 -g -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -open Simplifier__ -o lib/.Simplifier.objs/native/simplifier__Parser.cmx -c -impl lib/parser.ml)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w -40 -g -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -open Simplifier__ -o lib/.Simplifier.objs/native/simplifier__Lexer.cmx -c -impl lib/lexer.ml)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w -40 -g -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -open Simplifier__ -o lib/.Simplifier.objs/native/simplifier.cmx -c -impl lib/simplifier.ml)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w -40 -g -a -o lib/Simplifier.cmxa lib/.Simplifier.objs/native/simplifier__.cmx lib/.Simplifier.objs/native/simplifier__Ast.cmx lib/.Simplifier.objs/native/simplifier__Parser.cmx lib/.Simplifier.objs/native/simplifier__Lexer.cmx lib/.Simplifier.objs/native/simplifier__Modules.cmx lib/.Simplifier.objs/native/simplifier.cmx)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w -40 -g -I test/.Simplifier.eobjs/byte -I test/.Simplifier.eobjs/native -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -o test/.Simplifier.eobjs/native/dune__exe__Simplifier.cmx -c -impl test/Simplifier.ml)
-$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w -40 -g -o test/Simplifier.exe lib/Simplifier.cmxa test/.Simplifier.eobjs/native/dune__exe__Simplifier.cmx)
-$ (cd _build/default/test && ./Simplifier.exe)
-> d/dx (a^b) = ((b*(a^(b-1)))*(d/dx a))+(((a^b)*log(a))*(d/dx b))
-> d/dx (a^n) = (n*(a^(n-1)))*(d/dx a)
-> d/dx (c^b) = (log(c)*(c^b))*(d/dx b)
-> d/dx c = 0
-> d/dx (a/b) = (((d/dx a)*b)-((d/dx b)*a))/(b^2)
-> d/dx (a-b) = (d/dx a)-(d/dx b)
-> d/dx (a+b) = (d/dx a)+(d/dx b)
-> d/dx (a*b) = ((d/dx a)*b)+(a*(d/dx b))
-> d/dx x = 1
-> x^0 = 1
-> x^1 = x
-> 3-2 = 2
-> 2-1 = 1
-> x-0 = x
-> x*0 = 0
-> 0*x = 0
-> 1*x = x
-> x*1 = x
-> 0+x = x
-> x+0 = x
-> exp1: "f(a,x,2)", expected value: f(a, x, 2)
-> exp2: "f(b+c,c,2)", expected value: f(b+c, c, 2)
-> exp3: "f((9+c)+3,3,2)", expected value: f((9+c)+3, 3, 2)
-> exp4: "f((9+3)+3,3,2)", expected value: f((9+3)+3, 3, 2)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml-gen -no-alias-deps -opaque -o lib/.Simplifier.objs/native/simplifier__.cmx -c -impl lib/simplifier__.ml-gen)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Simplifier__ -o lib/.Simplifier.objs/native/simplifier__Ast.cmx -c -impl lib/ast.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -opaque -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier__Parser.cmi -c -intf lib/parser.mli)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -opaque -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier__Lexer.cmo -c -impl lib/lexer.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.Simplifier.objs/byte -no-alias-deps -opaque -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier.cmo -c -impl lib/simplifier.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.Simplifier.objs/byte -intf-suffix .ml -no-alias-deps -opaque -open Simplifier__ -o lib/.Simplifier.objs/byte/simplifier__Parser.cmo -c -impl lib/parser.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I bin/.main.eobjs/byte -I lib/.Simplifier.objs/byte -no-alias-deps -opaque -o bin/.main.eobjs/byte/dune__exe__Main.cmo -c -impl bin/main.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o lib/Simplifier.cma lib/.Simplifier.objs/byte/simplifier__.cmo lib/.Simplifier.objs/byte/simplifier__Ast.cmo lib/.Simplifier.objs/byte/simplifier__Parser.cmo lib/.Simplifier.objs/byte/simplifier__Lexer.cmo lib/.Simplifier.objs/byte/simplifier__Modules.cmo lib/.Simplifier.objs/byte/simplifier.cmo)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Simplifier__ -o lib/.Simplifier.objs/native/simplifier__Modules.cmx -c -impl lib/modules.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Simplifier__ -o lib/.Simplifier.objs/native/simplifier__Lexer.cmx -c -impl lib/lexer.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I test/.Simplifier.eobjs/byte -I lib/.Simplifier.objs/byte -no-alias-deps -opaque -o test/.Simplifier.eobjs/byte/dune__exe__Simplifier.cmo -c -impl test/Simplifier.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Simplifier__ -o lib/.Simplifier.objs/native/simplifier.cmx -c -impl lib/simplifier.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Simplifier__ -o lib/.Simplifier.objs/native/simplifier__Parser.cmx -c -impl lib/parser.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o test/Simplifier.bc lib/Simplifier.cma test/.Simplifier.eobjs/byte/dune__exe__Simplifier.cmo)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o lib/Simplifier.cmxa lib/.Simplifier.objs/native/simplifier__.cmx lib/.Simplifier.objs/native/simplifier__Ast.cmx lib/.Simplifier.objs/native/simplifier__Parser.cmx lib/.Simplifier.objs/native/simplifier__Lexer.cmx lib/.Simplifier.objs/native/simplifier__Modules.cmx lib/.Simplifier.objs/native/simplifier.cmx)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I test/.Simplifier.eobjs/byte -I test/.Simplifier.eobjs/native -I lib/.Simplifier.objs/byte -I lib/.Simplifier.objs/native -intf-suffix .ml -no-alias-deps -opaque -o test/.Simplifier.eobjs/native/dune__exe__Simplifier.cmx -c -impl test/Simplifier.ml)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -shared -linkall -I lib -o lib/Simplifier.cmxs lib/Simplifier.cmxa)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/Simplifier.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /Users/ericpetron/.opam/default/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o test/Simplifier.exe lib/Simplifier.cmxa test/.Simplifier.eobjs/native/dune__exe__Simplifier.cmx)

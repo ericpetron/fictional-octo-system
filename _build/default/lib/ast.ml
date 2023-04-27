@@ -10,7 +10,7 @@ type bop =
 type 'a expr =
   | Int of int
   | Var of 'a
-  | Fun of string * ('a expr) list (* f(x+2, 7, e) *)
+  | Fun of string * ('a expr) list
   | Binop of bop * ('a expr) * ('a expr)
   | Ddx of 'a * ('a expr)
 

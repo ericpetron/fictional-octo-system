@@ -1,1 +1,1 @@
-lib/modules.ml: Ast List Map String
+lib/modules.ml: Ast List Map Stdlib String

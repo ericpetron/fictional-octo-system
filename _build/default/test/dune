@@ -1,0 +1,4 @@
+(test
+ (name Simplifier)
+ (libraries Simplifier)
+ (deps ../data/rules.ddx))
